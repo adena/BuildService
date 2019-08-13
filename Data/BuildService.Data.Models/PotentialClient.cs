@@ -2,7 +2,7 @@
 {
     using BuildService.Data.Common.Models;
 
-    public class PotentialClient : BaseModel<string>
+    public class PotentialClient : BaseModel<int>
     {
         public string FirstName { get; set; }
 

@@ -11,6 +11,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190130121918_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190130121918_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20190813111838_AllWorksController.cs" />
+    <Compile Remove="Migrations\20190813111838_AllWorksController.Designer.cs" />
+    <Compile Remove="Migrations\20190813114910_AddedClassMetricsType.cs" />
+    <Compile Remove="Migrations\20190813114910_AddedClassMetricsType.Designer.cs" />
+    <Compile Remove="Migrations\20190813115515_AddedClassMetricsType.cs" />
+    <Compile Remove="Migrations\20190813115515_AddedClassMetricsType.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
 

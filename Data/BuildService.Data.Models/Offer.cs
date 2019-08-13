@@ -5,7 +5,7 @@
 
     using BuildService.Data.Common.Models;
 
-    public class Offer : BaseModel<string>
+    public class Offer : BaseDeletableModel<int>
     {
         public Offer()
         {

@@ -5,7 +5,7 @@
 
     using BuildService.Data.Common.Models;
 
-    public class BillOfQuantities : BaseModel<string>
+    public class BillOfQuantities : BaseDeletableModel<int>
     {
         public BillOfQuantities()
         {
@@ -18,15 +18,15 @@
 
         public ApplicationUser User { get; set; }
 
-        public string ClientId { get; set; }
+        public int ClientId { get; set; }
 
         public Client Client { get; set; }
 
-        public string OfferId { get; set; }
+        public int OfferId { get; set; }
 
         public Offer LinkedOffer { get; set; }
 
-        public string ContractId { get; set; }
+        public int ContractId { get; set; }
 
         public Contract Contract { get; set; }
 

@@ -26,6 +26,26 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Assessment> Assessments { get; set; }
+
+        public DbSet<BillOfQuantities> BillsOfQuantities { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
+
+        public DbSet<ClientLetter> ClientLetters { get; set; }
+
+        public DbSet<ConstructionCategory> ConstructionCategories { get; set; }
+
+        public DbSet<ConstructionWork> ConstructionWorks { get; set; }
+
+        public DbSet<Contract> Contracts { get; set; }
+
+        public DbSet<Offer> Offers { get; set; }
+
+        public DbSet<PotentialClient> PotentialClients { get; set; }
+
+        public DbSet<MetricsType> MetricsTypes { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

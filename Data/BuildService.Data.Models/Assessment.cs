@@ -5,7 +5,7 @@
 
     using BuildService.Data.Common.Models;
 
-    public class Assessment : BaseModel<string>
+    public class Assessment : BaseDeletableModel<int>
     {
         public Assessment()
         {
@@ -20,13 +20,13 @@
 
         public string SiteAdress { get; set; }
 
-        public string PotentialClientId { get; set; }
+        public int PotentialClientId { get; set; }
 
         public PotentialClient PotentialClient { get; set; }
 
         public DateTime VisitedOn { get; set; }
 
-        public IEnumerable<ConstructionWork> ConstructionWorks { get; set; }
+        public ICollection<ConstructionWork> ConstructionWorks { get; set; }
 
         public string Details { get; set; }
     }

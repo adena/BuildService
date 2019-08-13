@@ -1,9 +1,9 @@
 ﻿namespace BuildService.Web.ViewModels.Settings
 {
+    using AutoMapper;
+
     using BuildService.Data.Models;
     using BuildService.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

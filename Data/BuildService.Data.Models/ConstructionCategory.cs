@@ -4,7 +4,7 @@
 
     using BuildService.Data.Common.Models;
 
-    public class ConstructionCategory : BaseModel<string>
+    public class ConstructionCategory : BaseDeletableModel<int>
     {
         public ConstructionCategory()
         {

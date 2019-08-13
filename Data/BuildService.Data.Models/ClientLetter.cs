@@ -1,17 +1,20 @@
-﻿
-namespace BuildService.Data.Models
+﻿namespace BuildService.Data.Models
 {
+    using System;
+
     using BuildService.Data.Common.Models;
 
-    public class ClientLetter : BaseModel<string>
+    public class ClientLetter : BaseDeletableModel<int>
     {
         public int Number { get; set; }
 
-        public string UserId { get; set; }
+        public DateTime SentOn { get; set; }
+
+        public int UserId { get; set; }
 
         public ApplicationUser User { get; set; }
 
-        public string OfferId { get; set; }
+        public int OfferId { get; set; }
 
         public Offer LinkedOffer { get; set; }
 
