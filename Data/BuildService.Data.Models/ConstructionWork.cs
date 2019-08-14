@@ -4,6 +4,11 @@
 
     public class ConstructionWork : BaseDeletableModel<int>
     {
+        public ConstructionWork()
+        {
+            this.Quantity = 0.0m;
+        }
+
         public string Title { get; set; }
 
         public decimal Price { get; set; }
@@ -13,6 +18,8 @@
         public MetricsType Metric { get; set; }
 
         public decimal Quantity { get; set; } = 0.0m;
+
+        public int ConstructionCategoryId { get; set; }
 
         public ConstructionCategory ConstructionCategory { get; set; }
 

@@ -5,6 +5,11 @@
 
     public abstract class BaseModel<TKey> : IAuditInfo
     {
+        protected BaseModel()
+        {
+            this.CreatedOn = DateTime.UtcNow;
+        }
+
         [Key]
         public TKey Id { get; set; }
 

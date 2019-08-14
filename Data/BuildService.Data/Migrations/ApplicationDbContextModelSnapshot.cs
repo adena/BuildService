@@ -264,7 +264,7 @@ namespace BuildService.Data.Migrations
 
                     b.Property<int?>("BillOfQuantitiesId");
 
-                    b.Property<int?>("ConstructionCategoryId");
+                    b.Property<int>("ConstructionCategoryId");
 
                     b.Property<DateTime>("CreatedOn");
 
@@ -610,7 +610,8 @@ namespace BuildService.Data.Migrations
 
                     b.HasOne("BuildService.Data.Models.ConstructionCategory", "ConstructionCategory")
                         .WithMany("ConstructionWorks")
-                        .HasForeignKey("ConstructionCategoryId");
+                        .HasForeignKey("ConstructionCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("BuildService.Data.Models.MetricsType", "Metric")
                         .WithMany()

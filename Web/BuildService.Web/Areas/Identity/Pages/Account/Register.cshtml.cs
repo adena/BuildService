@@ -1,6 +1,7 @@
 ﻿namespace BuildService.Web.Areas.Identity.Pages.Account
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
 
@@ -52,6 +53,16 @@
             {
                 var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email };
                 var result = await this.userManager.CreateAsync(user, this.Input.Password);
+
+                if (this.userManager.Users.Count() == 1)
+                {
+                    await this.userManager.AddToRoleAsync(user, "Administrator");
+                }
+                else
+                {
+                    await this.userManager.AddToRoleAsync(user, "User");
+                }
+
                 if (result.Succeeded)
                 {
                     this.logger.LogInformation("User created a new account with password.");
