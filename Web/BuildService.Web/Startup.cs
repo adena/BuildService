@@ -41,7 +41,11 @@
             // Framework services
             // TODO: Add pooling when this bug is fixed: https://github.com/aspnet/EntityFrameworkCore/issues/9741
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+                options =>
+                {
+                    options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection"));
+                    options.EnableSensitiveDataLogging();
+                });
 
             services
                 .AddIdentity<ApplicationUser, ApplicationRole>(options =>

@@ -38,4 +38,8 @@
     <ProjectReference Include="..\BuildService.Web.Infrastructure\BuildService.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\BuildService.Web.ViewModels\BuildService.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\ConstructionCategories\" />
+  </ItemGroup>
 </Project>
