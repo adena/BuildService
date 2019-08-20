@@ -23,8 +23,4 @@
     <ProjectReference Include="..\..\Services\BuildService.Services.Mapping\BuildService.Services.Mapping.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ConstructionCategories\" />
-  </ItemGroup>
-
 </Project>

@@ -1,6 +1,25 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+table {
+    counter-reset: tableCount;
+}
+
+.counterCell:before {
+    content: counter(tableCount);
+    counter-increment: tableCount;
+}
+
+#index-page {
+    background-image: url("https://cdn.shopify.com/s/files/1/2472/8980/files/bigstock-Construction-Worker-At-Site-3461983.jpg?v=1508779028");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    height: 700px;
+    color:black;
+}
+
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
