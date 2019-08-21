@@ -14,10 +14,6 @@
 
         public int Number { get; set; }
 
-        public string UserId { get; set; }
-
-        public ApplicationUser User { get; set; }
-
         public string SiteAdress { get; set; }
 
         public int PotentialClientId { get; set; }
@@ -26,7 +22,7 @@
 
         public DateTime VisitedOn { get; set; }
 
-        public ICollection<ConstructionWork> ConstructionWorks { get; set; }
+        public IList<ConstructionWork> ConstructionWorks { get; set; }
 
         public string Details { get; set; }
     }

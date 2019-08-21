@@ -1,0 +1,68 @@
+﻿@using BuildService.Web.ViewModels.ConstructionWorks
+@model BuildService.Web.ViewModels.Assessments.AssessmentViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Assessment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitedOn" class="control-label"></label>
+                <input asp-for="VisitedOn" class="form-control" />
+                <span asp-validation-for="VisitedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteAdress" class="control-label"></label>
+                <input asp-for="SiteAdress" class="form-control" />
+                <span asp-validation-for="SiteAdress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PotentialClientFirstName" class="control-label"></label>
+                <input asp-for="PotentialClientFirstName" class="form-control" />
+                <span asp-validation-for="PotentialClientFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PotentialClientLastName" class="control-label"></label>
+                <input asp-for="PotentialClientLastName" class="form-control" />
+                <span asp-validation-for="PotentialClientLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PotentialClientEmail" class="control-label"></label>
+                <input asp-for="PotentialClientEmail" class="form-control" />
+                <span asp-validation-for="PotentialClientEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PotentialClientPhone" class="control-label"></label>
+                <input asp-for="PotentialClientPhone" class="form-control" />
+                <span asp-validation-for="PotentialClientPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Details" class="control-label"></label>
+                <input asp-for="Details" class="form-control" />
+                <span asp-validation-for="Details" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="All">Назад</a>
+</div>
+

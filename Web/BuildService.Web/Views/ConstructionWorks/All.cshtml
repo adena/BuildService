@@ -1,0 +1,34 @@
+﻿@using BuildService.Web.ViewModels.ConstructionWorks
+@model IEnumerable<ConstructionWorkViewModel>
+@{
+    this.ViewData["Title"] = "Строителни работи";
+}
+
+<div class="text-center">
+    <h1>Строително-ремонтни работи</h1>
+</div>
+
+<a class="btn btn-info btn-lg m-2" href="~/ConstructionWorks/Create" role="button">Създай СРР</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Наименование</th>
+            <th scope="col">Единична цена</th>
+            <th scope="col">Мярка</th>
+            <th scope="col">Категория</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var work in Model)
+        {
+            <tr>
+                <th scope="row">@work.Title</th>
+                <td>@work.Price</td>
+                <td>@work.MetricName</td>
+                <td>@work.ConstructionCategoryName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

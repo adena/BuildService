@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BuildService.Web.ViewModels.Assessments.AssessmentViewModel>
+
+@{
+    ViewData["Title"] = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1>ОГЛЕДИ</h1>
+    <p>
+        <a class="btn btn-info btn-lg m-3" href="~/Assessments/Create" role="button">Добави оглед</a>
+    </p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Оглед №</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Клиент</th>
+            <th scope="col">Адрес</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td scope="col" class="counterCell"></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteAdress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PotentialClientFirstName + " " + item.PotentialClientLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PotentialClientEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PotentialClientPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitedOn)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

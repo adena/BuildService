@@ -9,6 +9,7 @@
     using BuildService.Data.Repositories;
     using BuildService.Data.Seeding;
     using BuildService.Services.Data;
+    using BuildService.Services.Data.Assessments;
     using BuildService.Services.Data.ConstructionCategories;
     using BuildService.Services.Data.ConstructionWorks;
     using BuildService.Services.Mapping;
@@ -104,10 +105,10 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISmsSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
 
             services.AddTransient<IConstructionWorksService, ConstructionWorksService>();
             services.AddTransient<IConstructionCategoriesService, ConstructionCategoriesService>();
+            services.AddTransient<IAssessmentsService, AssessmentsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

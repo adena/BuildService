@@ -1,0 +1,65 @@
+﻿@using BuildService.Web.ViewModels.ConstructionWorks
+@model BuildService.Data.Models.ConstructionWork
+
+@{
+    ViewData["Title"] = "Създай строителна работа";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Създай</h1>
+
+<h4>Строително-ремонтна работа</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Наименование</label>
+                <input type="text"
+                       id="title"
+                       placeholder="Наименование..."
+                       asp-for="Title"
+                       class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Цена</label>
+                <input type="text"
+                       id="price"
+                       placeholder="Цена..."
+                       asp-for="Price"
+                       class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Metric" class="control-label">Мярка</label>
+                <select asp-for="Metric" class="custom-select" id="metric">
+                    <option selected disabled>Изберете мярка</option>
+                    @foreach (var metric in (List<MetricsViewModel>)ViewData["Metrics"])
+                    {
+                        <option value="@metric.Name">@metric.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConstructionCategory" class="control-label">Категория</label>
+                <select asp-for="ConstructionCategory" class="custom-select" id="constructionCategory">
+                    <option selected disabled>Изберете категория</option>
+                    @foreach (var category in (List<CategoryViewModel>)ViewData["Categories"])
+                    {
+                        <option value="@category.Name">@category.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Създай" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="All">Назад</a>
+</div>
+
