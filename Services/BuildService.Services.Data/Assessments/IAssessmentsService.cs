@@ -9,6 +9,11 @@
     {
         IEnumerable<TViewModel> GetAllAssessments<TViewModel>();
 
-        Task CreateNewAssessmentAsync(AssessmentInputModel input);
+        AssessmentViewModel GetAssessmentById(int id);
+
+        Task<int> CreatePartialAssessmentAsync(AssessmentViewModel input);
+
+        Task AddWorksToAssessment(AssessmentViewModel viewModel);
+
     }
 }

@@ -1,58 +1,39 @@
-﻿@model List<BuildService.Web.ViewModels.ConstructionWorks.ConstructionWorkViewModel>
+﻿@using BuildService.Web.ViewModels.ConstructionWorks
+@model List<BuildService.Web.ViewModels.ConstructionWorks.ConstructionWorkViewModel>
 
-@{
-    ViewData["Title"] = "AddWorks";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+<h4>Строително-ремонтни работи</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddWorks" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<h1>AddWorks</h1>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="form-group">
+                    <input asp-for="@Model[i].Title" type="text" value="@Model[i].Title" />
+                </div>
+                <div class="form-group">
+                    <input type="text" value="@Model[i].MetricName" />
+                </div>
+                <div class="form-group">
+                    <input type="text" value="@Model[i].Quantity" />
+                </div>
+                <div class="form-group">
+                    <input type="number" value="works[i].Price" />
+                </div>
+                <div class="form-group">
+                    <input type="hidden" value="works[i].ConstructionCategoryName" />
+                </div>
+            }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Наименование
-            </th>
-            <th>
-                Цена
-            </th>
-            <th>
-                Мярка
-            </th>
-            <th>
-                Количество
-            </th>
+            <div class="form-group">
+                <input type="submit" value="Създай" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetricName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConstructionCategoryName)
-            </td>        
-            <td>
-                <a asp-action="Edit" asp-route="@item.Title">Edit</a> |
-                <a asp-action="Details" asp-route="@item.Title">Details</a> |
-                <a asp-action="Delete" asp-route="@item.Title">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div>
+    <a asp-action="All">Назад</a>
+</div>

@@ -17,8 +17,10 @@
             <th scope="col">№</th>
             <th scope="col">Оглед №</th>
             <th scope="col">Дата</th>
-            <th scope="col">Клиент</th>
             <th scope="col">Адрес</th>
+            <th scope="col">Клиент</th>
+            <th scope="col">Имейл</th>
+            <th scope="col">Телефон</th>
             <th></th>
         </tr>
     </thead>
@@ -28,22 +30,22 @@
         <tr>
             <td scope="col" class="counterCell"></td>
             <td>
-                @Html.DisplayFor(modelItem => item.Number)
+                @item.Number
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitedOn, "{0:dd/MM/yyyy}")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SiteAdress)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PotentialClientFirstName + " " + item.PotentialClientLastName)
+                @Html.DisplayFor(modelItem => item.PotentialClient.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PotentialClientEmail)
+                @Html.DisplayFor(modelItem => item.PotentialClient.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PotentialClientPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VisitedOn)
+                @Html.DisplayFor(modelItem => item.PotentialClient.Phone)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

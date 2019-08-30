@@ -1,17 +1,12 @@
 ﻿namespace BuildService.Web.Controllers
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using BuildService.Data.Models;
     using BuildService.Services.Data.Assessments;
     using BuildService.Services.Data.ConstructionWorks;
-    using BuildService.Services.Mapping;
     using BuildService.Web.ViewModels.Assessments;
     using BuildService.Web.ViewModels.ConstructionWorks;
-    using BuildService.Web.Areas.Identity.Pages.Account;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
 
     public class AssessmentsController : BaseController
     {
@@ -47,34 +42,55 @@
                 return this.View();
             }
 
-            var works = this.constructionWorksService.GetAllConstructionWorks<ConstructionWorkViewModel>();
+            var assessmentId = this.assessmentsService.CreatePartialAssessmentAsync(input);
 
-            if (input != null && works.Count() > 0)
+            this.TempData["Id"] = assessmentId;
+            
+            if (input != null)
             {
-                return this.RedirectToAction("AddWorks", "Assessments", works);
+                return this.RedirectToAction("AddWorks", "Assessments", new {id = assessmentId});
             }
 
-            return this.Redirect("Assessments/Create");
+            return this.Redirect("/Assessments/Create");
         }
 
         [HttpGet]
         [Authorize]
-        public IActionResult AddWorks(AssessmentViewModel input)
+        [Route("Assessments/AddWorks/{id}")]
+        public IActionResult AddWorks(int id)
         {
-            this.ViewBag.AssessmentInput = input;
-
-            return this.View();
+            var works = this.constructionWorksService.GetAllConstructionWorks<ConstructionWorkViewModel>();
+            return this.View(works);
         }
 
         [HttpPost]
         [Authorize]
-        public IActionResult AddWorks(List<ConstructionWorkViewModel> input)
+        [Route("Assessments/AddWorks/{id}")]
+        public IActionResult AddWorks(int id, List<ConstructionWorkViewModel> input)
         {
-            (this.ViewBag.AssessmentInput as AssessmentInputModel).ConstructionWorks.ToList().AddRange(input);
+            var assessmentId = id;
 
-            var assessment = this.assessmentsService.CreateNewAssessmentAsync(this.ViewBag.AssessmentInput as AssessmentInputModel);
+            var assessmentViewModel = this.assessmentsService.GetAssessmentById(assessmentId);
 
-            return this.View();
+            foreach (var item in input)
+            {
+                if (item.Quantity > 0)
+                {
+                    assessmentViewModel.ConstructionWorks.Add(item);
+                }
+            }
+
+            var result = this.assessmentsService.AddWorksToAssessment(assessmentViewModel);
+            
+            return this.RedirectToAction("Details", new { assessmentid = assessmentId });
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var assessment = this.assessmentsService.GetAssessmentById(assessmentid);
+
+            return this.View(assessment);
         }
     }
 }

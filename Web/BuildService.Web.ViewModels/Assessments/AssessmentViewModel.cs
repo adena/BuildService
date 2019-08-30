@@ -22,13 +22,7 @@
 
         public string SiteAdress { get; set; }
 
-        public string PotentialClientFirstName { get; set; }
-
-        public string PotentialClientLastName { get; set; }
-
-        public string PotentialClientEmail { get; set; }
-
-        public string PotentialClientPhone { get; set; }
+        public PotentialClientViewModel PotentialClient { get; set; }
 
         public string Details { get; set; }
 

@@ -13,7 +13,7 @@ namespace BuildService.Data.Seeding
         {
             if (!dbContext.ConstructionWorks.Any())
             {
-                dbContext.ConstructionWorks.AddRangeAsync(new ConstructionWork { Title = "Циментова замазка до 2,5 см.", MetricId = 1, Price = 12.00m, ConstructionCategoryId = 1 }, new ConstructionWork { Title = "Боядисване с латекс", MetricId = 1, Price = 25.00m, ConstructionCategoryId = 2 }, new ConstructionWork { Title = "Варова мазилка", MetricId = 1, Price = 20.00m, ConstructionCategoryId = 1 });
+                dbContext.ConstructionWorks.AddRangeAsync(new ConstructionWork { Title = "Циментова замазка до 2,5 см.", MetricId = 1, Price = 12, ConstructionCategoryId = 1 }, new ConstructionWork { Title = "Боядисване с латекс", MetricId = 1, Price = 25, ConstructionCategoryId = 2 }, new ConstructionWork { Title = "Варова мазилка", MetricId = 1, Price = 20, ConstructionCategoryId = 1 });
             }
 
             return Task.CompletedTask;

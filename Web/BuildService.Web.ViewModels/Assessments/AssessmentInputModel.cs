@@ -7,7 +7,7 @@
     using BuildService.Services.Mapping;
     using BuildService.Web.ViewModels.ConstructionWorks;
 
-    public class AssessmentInputModel : IMapTo<Assessment>
+    public class AssessmentInputModel : IMapTo<Assessment>, IMapFrom<AssessmentViewModel>, IMapTo<AssessmentViewModel>
     {
         public AssessmentInputModel()
         {
