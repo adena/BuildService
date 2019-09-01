@@ -3,7 +3,7 @@
     using BuildService.Data.Models;
     using BuildService.Services.Mapping;
 
-    public class PotentialClientViewModel : IMapFrom<PotentialClient>
+    public class PotentialClientViewModel : IMapFrom<PotentialClient>, IMapTo<PotentialClient>
     {
         public string FirstName { get; set; }
 

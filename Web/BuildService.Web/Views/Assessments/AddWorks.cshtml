@@ -7,26 +7,37 @@
     <div class="col-md-4">
         <form asp-action="AddWorks" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            @for (int i = 0; i < Model.Count; i++)
-            {
-                <div class="form-group">
-                    <input asp-for="@Model[i].Title" type="text" value="@Model[i].Title" />
-                </div>
-                <div class="form-group">
-                    <input type="text" value="@Model[i].MetricName" />
-                </div>
-                <div class="form-group">
-                    <input type="text" value="@Model[i].Quantity" />
-                </div>
-                <div class="form-group">
-                    <input type="number" value="works[i].Price" />
-                </div>
-                <div class="form-group">
-                    <input type="hidden" value="works[i].ConstructionCategoryName" />
-                </div>
-            }
-
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Наименование</th>
+                        <th scope="col">Мярка</th>
+                        <th scope="col">Количество</th>
+                        <th scope="col">Цена</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                    <tr>
+                        <td>
+                        <input asp-for="@Model[i].Title" type="text" value="@Model[i].Title" />
+                        </td>
+                        <td>
+                        <input type="text" value="@Model[i].MetricName" />
+                        </td>
+                        <td>
+                        <input type="text" value="@Model[i].Quantity" />
+                        </td>
+                        <td>
+                        <input type="number" value="works[i].Price" />
+                        </td>
+                        <input type="hidden" value="works[i].ConstructionCategoryName" />
+                    </tr>
+                    }
+                </tbody>
+            </table>
             <div class="form-group">
                 <input type="submit" value="Създай" class="btn btn-primary" />
             </div>

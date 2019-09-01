@@ -42,13 +42,11 @@
                 return this.View();
             }
 
-            var assessmentId = this.assessmentsService.CreatePartialAssessmentAsync(input);
-
-            this.TempData["Id"] = assessmentId;
+            var assessmentId = this.assessmentsService.CreatePartialAssessment(input);
             
             if (input != null)
             {
-                return this.RedirectToAction("AddWorks", "Assessments", new {id = assessmentId});
+                return this.RedirectToAction("AddWorks", "Assessments", new { id = assessmentId });
             }
 
             return this.Redirect("/Assessments/Create");
@@ -56,9 +54,11 @@
 
         [HttpGet]
         [Authorize]
-        [Route("Assessments/AddWorks/{id}")]
+        // [Route("Assessments/AddWorks/{id}")]
         public IActionResult AddWorks(int id)
         {
+            this.TempData["Id"] = id;
+
             var works = this.constructionWorksService.GetAllConstructionWorks<ConstructionWorkViewModel>();
             return this.View(works);
         }
@@ -68,7 +68,9 @@
         [Route("Assessments/AddWorks/{id}")]
         public IActionResult AddWorks(int id, List<ConstructionWorkViewModel> input)
         {
-            var assessmentId = id;
+            this.ViewData["Id"] = this.TempData["Id"];
+
+            var assessmentId = (int)this.ViewData["Id"];
 
             var assessmentViewModel = this.assessmentsService.GetAssessmentById(assessmentId);
 
@@ -88,7 +90,7 @@
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var assessment = this.assessmentsService.GetAssessmentById(assessmentid);
+            var assessment = this.assessmentsService.GetAssessmentById(id);
 
             return this.View(assessment);
         }

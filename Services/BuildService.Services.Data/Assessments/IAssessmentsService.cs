@@ -1,9 +1,9 @@
 ﻿namespace BuildService.Services.Data.Assessments
 {
-    using BuildService.Web.ViewModels.Assessments;
-
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
+    using BuildService.Web.ViewModels.Assessments;
 
     public interface IAssessmentsService
     {
@@ -11,7 +11,7 @@
 
         AssessmentViewModel GetAssessmentById(int id);
 
-        Task<int> CreatePartialAssessmentAsync(AssessmentViewModel input);
+        int CreatePartialAssessment(AssessmentViewModel input);
 
         Task AddWorksToAssessment(AssessmentViewModel viewModel);
 

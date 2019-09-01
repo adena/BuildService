@@ -18,9 +18,10 @@
             this.context = context;
         }
 
-        public async Task<int> CreatePartialAssessmentAsync(AssessmentViewModel input)
+        public int CreatePartialAssessment(AssessmentViewModel input)
         {
-            var assessment = new Assessment() {
+            var assessment = new Assessment()
+            {
                 Number = input.Number,
                 VisitedOn = input.VisitedOn,
                 SiteAdress = input.SiteAdress,
@@ -31,17 +32,17 @@
                     Email = input.PotentialClient.Email,
                     Phone = input.PotentialClient.Phone,
                     SiteAdress = input.SiteAdress,
-                },                
+                },
                 Details = input.Details,
             };
-            var assessmentId = assessment.Id;
 
-            await this.context.Assessments.AddAsync(assessment);
-            await this.context.SaveChangesAsync();
+            this.context.Assessments.Add(assessment);
+            this.context.SaveChanges();
+
+            var assessmentId = assessment.Id;
             return assessmentId;
         }
-        
-        
+
         public IEnumerable<TViewModel> GetAllAssessments<TViewModel>()
         {
             var assessments = this.context.Assessments.To<TViewModel>().ToList();
@@ -53,16 +54,18 @@
         {
             var assessment = this.context.Assessments.SingleOrDefault(x => x.Id == id);
 
+            var client = this.context.PotentialClients.SingleOrDefault(x => x.Id == assessment.PotentialClientId);
+
             var result = new AssessmentViewModel() {
                 Number = assessment.Number,
                 VisitedOn = assessment.VisitedOn,
                 SiteAdress = assessment.SiteAdress,
                 PotentialClient = new PotentialClientViewModel()
                 {
-                    FirstName = assessment.PotentialClient.FirstName,
-                    LastName = assessment.PotentialClient.LastName,
-                    Email = assessment.PotentialClient.Email,
-                    Phone = assessment.PotentialClient.Phone,
+                    FirstName = client.FirstName,
+                    LastName = client.LastName,
+                    Email = client.Email,
+                    Phone = client.Phone,
                 },
                 Details = assessment.Details,
             };
