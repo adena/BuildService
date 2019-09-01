@@ -94,5 +94,12 @@
 
             return this.View(assessment);
         }
+
+        public IActionResult Delete(int id)
+        {
+            int assessmentId = this.assessmentsService.DeleteAssessment(id);
+
+            return this.Redirect("/Assessments/All");
+        }
     }
 }

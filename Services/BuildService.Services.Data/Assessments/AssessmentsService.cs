@@ -1,5 +1,6 @@
 ﻿namespace BuildService.Services.Data.Assessments
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -45,7 +46,7 @@
 
         public IEnumerable<TViewModel> GetAllAssessments<TViewModel>()
         {
-            var assessments = this.context.Assessments.To<TViewModel>().ToList();
+            var assessments = this.context.Assessments.Where(x => x.IsDeleted == false).To<TViewModel>().ToList();
 
             return assessments;
         }
@@ -84,10 +85,22 @@
                 assessment.ConstructionWorks.Add(cw);
             }
 
-            this.context.Assessments.Update(assessment);
+            this.context.SaveChanges();
 
             return Task.CompletedTask;
         }
 
+
+        public int DeleteAssessment(int id)
+        {
+            var assessment = this.context.Assessments.SingleOrDefault(x => x.Id == id);
+
+            assessment.IsDeleted = true;
+            assessment.DeletedOn = DateTime.UtcNow;
+
+            this.context.SaveChanges();
+
+            return id;
+        }
     }
 }

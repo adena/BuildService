@@ -15,5 +15,7 @@
 
         Task AddWorksToAssessment(AssessmentViewModel viewModel);
 
+        int DeleteAssessment(int id);
+
     }
 }
