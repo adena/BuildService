@@ -74,7 +74,7 @@
             return result;
         }
 
-        public Task AddWorksToAssessment(AssessmentViewModel viewModel)
+        public void AddWorksToAssessment(AssessmentViewModel viewModel)
         {
             var assessment = this.context.Assessments.SingleOrDefault(x => x.Id == viewModel.Id);
 
@@ -86,8 +86,6 @@
             }
 
             this.context.SaveChanges();
-
-            return Task.CompletedTask;
         }
 
 

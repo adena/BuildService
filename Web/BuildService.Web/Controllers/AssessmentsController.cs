@@ -65,9 +65,9 @@
 
         [HttpPost]
         [Authorize]
-        [Route("Assessments/AddWorks/{id}")]
-        public IActionResult AddWorks(int id, List<ConstructionWorkViewModel> input)
+        public IActionResult AddWorks(List<ConstructionWorkViewModel> input)
         {
+
             this.ViewData["Id"] = this.TempData["Id"];
 
             var assessmentId = (int)this.ViewData["Id"];
@@ -82,7 +82,7 @@
                 }
             }
 
-            var result = this.assessmentsService.AddWorksToAssessment(assessmentViewModel);
+            this.assessmentsService.AddWorksToAssessment(assessmentViewModel);
             
             return this.RedirectToAction("Details", new { assessmentid = assessmentId });
         }

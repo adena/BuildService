@@ -13,7 +13,7 @@
 
         int CreatePartialAssessment(AssessmentViewModel input);
 
-        Task AddWorksToAssessment(AssessmentViewModel viewModel);
+        void AddWorksToAssessment(AssessmentViewModel viewModel);
 
         int DeleteAssessment(int id);
 
